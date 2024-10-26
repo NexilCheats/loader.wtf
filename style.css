@@ -14,16 +14,22 @@ body {
 }
 
 .container {
-  display: flex;
-  gap: 50px;
+  position: relative;
+  width: 100%;
+  max-width: 350px;
 }
 
 .form-box {
   background-color: #1f1f2e;
   border-radius: 10px;
   padding: 30px;
-  width: 300px;
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none; /* Hide both by default */
+}
+
+.form-box.active {
+  display: block; /* Show only active form */
 }
 
 h2 {
@@ -60,7 +66,7 @@ input[type="password"] {
   justify-content: space-between;
 }
 
-.login-button {
+.login-button, .register-button {
   background-color: #ff9933;
   color: white;
   padding: 10px 20px;
@@ -69,7 +75,7 @@ input[type="password"] {
   cursor: pointer;
 }
 
-.register-button {
+.switch-button {
   background-color: #333;
   color: white;
   padding: 10px 20px;
@@ -80,4 +86,9 @@ input[type="password"] {
 
 button:hover {
   opacity: 0.8;
+}
+
+/* Hide initially */
+.hidden {
+  display: none;
 }
