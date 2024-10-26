@@ -1,5 +1,12 @@
 let keys = [];
 
+// Predefined usernames and passwords for validation
+const validCredentials = {
+  'user1': 'password1',
+  'user2': 'password2',
+  // Add more valid usernames and passwords here
+};
+
 // Fetch keys from the text file when the page loads
 window.onload = function() {
   document.getElementById('login-box').classList.add('active');
@@ -33,5 +40,24 @@ document.querySelector('.register-button').onclick = function() {
     // Proceed with registration logic (e.g., saving the user)
   } else {
     alert('Invalid key. Please try again.');
+  }
+};
+
+// Validate login credentials
+document.querySelector('.login-button').onclick = function() {
+  const username = document.querySelector('input[name="username"]').value;
+  const password = document.querySelector('input[name="password"]').value;
+  const errorMessage = document.getElementById('error-message');
+
+  // Clear previous error messages
+  errorMessage.style.display = 'none';
+
+  // Check if the username and password are valid
+  if (validCredentials[username] === password) {
+    alert('Login successful!');
+    // Proceed with login logic (e.g., redirecting the user)
+  } else {
+    errorMessage.textContent = 'Login failed: invalid username or password.';
+    errorMessage.style.display = 'block'; // Show the error message
   }
 };
